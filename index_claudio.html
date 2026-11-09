@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cláudio Gulele | Portfólio</title>
+  <meta name="description" content="Portfólio de Cláudio Gulele, estudante de programação de aplicações web em Maputo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f2f6f3;
+  --surface: #ffffff;
+  --ink: #12261c;
+  --muted: #4d6258;
+  --line: #d3ddd7;
+  --green: #0b6b4b;
+  --green-dark: #084d36;
+  --yellow: #f2b705;
+  --radius: 6px;
+  --font-head: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Public Sans", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1a14;
+    --surface: #15261d;
+    --ink: #e9f1ec;
+    --muted: #a3b8ad;
+    --line: #27402f;
+    --green: #3fbf8c;
+    --green-dark: #2fa475;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+a { color: var(--green); }
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+/* Faixa fina no topo, com as cores da bandeira */
+.flag { display: flex; height: 6px; }
+.flag span:nth-child(1) { flex: 3; background: #0b8a4a; }
+.flag span:nth-child(2) { flex: 1; background: #111; }
+.flag span:nth-child(3) { flex: 1; background: var(--yellow); }
+
+.topbar,
+main,
+footer {
+  width: min(1040px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+}
+
+.brand {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.topbar nav { display: flex; gap: 1.5rem; }
+.topbar nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.topbar nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; }
+
+/* Hero */
+.hero { padding: clamp(3rem, 10vw, 7rem) 0 clamp(3rem, 8vw, 5rem); }
+
+.hero h1 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+}
+
+.lead {
+  max-width: 34rem;
+  font-size: 1.25rem;
+  color: var(--muted);
+  margin: 0 0 2rem;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.btn {
+  display: inline-block;
+  font: 600 1rem var(--font-body);
+  padding: 0.8rem 1.4rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn:hover { background: var(--ink); color: var(--bg); }
+
+.btn-primary { background: var(--green); border-color: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+
+/* Secções: título à esquerda, conteúdo à direita */
+.block {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.block h2 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.content { max-width: 44rem; }
+.content > p:first-child { margin-top: 0; }
+.content h3 { font-family: var(--font-head); font-size: 1.1rem; margin: 2rem 0 0.75rem; }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0; }
+.chips li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Projectos */
+.projects { display: grid; gap: 1rem; }
+
+.project {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--green);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.project h3 { margin: 0 0 0.4rem; font-size: 1.2rem; }
+.project p { margin: 0 0 0.9rem; color: var(--muted); }
+.project .chips li { font-size: 0.85rem; padding: 0.15rem 0.65rem; }
+.project .links { margin: 0.9rem 0 0; display: flex; gap: 1.25rem; font-weight: 600; }
+
+/* Formulário */
+form { margin-top: 1.5rem; }
+.field { margin-bottom: 1.1rem; }
+label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+
+input, textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+}
+input:focus, textarea:focus { border-color: var(--green); }
+input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #c0392b; }
+
+#form-status { margin: 1rem 0 0; font-weight: 500; min-height: 1.5em; }
+#form-status.ok { color: var(--green); }
+#form-status.erro { color: #c0392b; }
+
+.alt-contact { margin-top: 2rem; color: var(--muted); }
+
+footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
+
+/* Telemóvel */
+@media (max-width: 720px) {
+  .block { grid-template-columns: 1fr; gap: 1rem; }
+  .topbar nav { gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+
+</style>
+</head>
+<body>
+  <div class="flag" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="topbar">
+    <a class="brand" href="#inicio">Cláudio Gulele</a>
+    <nav aria-label="Principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#projectos">Projectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <h1>Olá, sou o Cláudio.</h1>
+      <p class="lead">Estudante de Programação de Aplicações Web em Maputo. Construo sistemas com PHP, MySQL, JavaScript e Java.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projectos">Ver projectos</a>
+        <a class="btn" href="#contacto">Falar comigo</a>
+      </div>
+    </section>
+
+    <section id="sobre" class="block">
+      <h2>Sobre mim</h2>
+      <div class="content">
+        <p>Estudo no IMEP, em Maputo, onde aprendo a desenhar e programar aplicações web completas: da base de dados ao ecrã. Gosto de transformar problemas reais, como reservas, consultas e vendas, em sistemas simples de usar.</p>
+        <p>Neste momento estou à procura de oportunidades de estágio e de projectos onde possa aprender e contribuir.</p>
+        <h3>Tecnologias</h3>
+        <ul class="chips" id="skills"></ul>
+      </div>
+    </section>
+
+    <section id="projectos" class="block">
+      <h2>Projectos</h2>
+      <div class="content">
+        <div class="projects" id="projects"></div>
+      </div>
+    </section>
+
+    <section id="contacto" class="block">
+      <h2>Contacto</h2>
+      <div class="content">
+        <p>Escreve-me uma mensagem e eu respondo assim que possível.</p>
+
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+          <p id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="alt-contact">Prefere falar já? <a id="whatsapp-link" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a> ou <a id="email-link" href="#">enviar email directo</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Cláudio Gulele. Maputo, Moçambique.</p>
+  </footer>
+
+  <script>
+// ============================================================
+// 1. CONFIGURAÇÃO: muda só esta parte
+// ============================================================
+const CONFIG = {
+  email: "claudiogulele07@gmail.com",   // o teu email
+  whatsapp: "258853183362",         // número com indicativo, sem + nem espaços
+  formspreeId: ""                   // opcional: ID do Formspree (ver README)
+};
+
+const SKILLS = ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Java", "Git e GitHub", "UML"];
+
+const PROJECTS = [
+  {
+    titulo: "Cinema Moz",
+    descricao: "Sistema de reserva de lugares de cinema, com controlo de reservas em simultâneo para evitar lugares duplicados.",
+    tecnologias: ["PHP", "MySQL", "PDO"],
+    codigo: "",   // link do repositório no GitHub
+    demo: ""      // link da demonstração (se houver)
+  },
+  {
+    titulo: "Saúde Digital",
+    descricao: "Aplicação de marcação de consultas médicas com área de utilizador, login e sessões.",
+    tecnologias: ["PHP", "MySQL", "Sessões"],
+    codigo: "",
+    demo: ""
+  },
+  {
+    titulo: "Caixa de Supermercado",
+    descricao: "Sistema de caixa para supermercado com registo de produtos e vendas, ligado a uma base de dados.",
+    tecnologias: ["Java Swing", "MySQL"],
+    codigo: "",
+    demo: ""
+  },
+  {
+    titulo: "Receitas Culinárias",
+    descricao: "Livro de receitas com criar, listar, editar e apagar receitas (CRUD).",
+    tecnologias: ["PHP", "MySQL", "CRUD"],
+    codigo: "",
+    demo: ""
+  }
+];
+
+// ============================================================
+// 2. CÓDIGO: não precisas de mexer daqui para baixo
+// ============================================================
+const $ = (sel) => document.querySelector(sel);
+
+function chips(lista) {
+  return lista.map((t) => `<li>${t}</li>`).join("");
+}
+
+// Competências
+$("#skills").innerHTML = chips(SKILLS);
+
+// Projectos
+$("#projects").innerHTML = PROJECTS.map((p) => {
+  const links = [
+    p.codigo ? `<a href="${p.codigo}" target="_blank" rel="noopener">Código</a>` : "",
+    p.demo ? `<a href="${p.demo}" target="_blank" rel="noopener">Demonstração</a>` : ""
+  ].join("");
+
+  return `
+    <article class="project">
+      <h3>${p.titulo}</h3>
+      <p>${p.descricao}</p>
+      <ul class="chips">${chips(p.tecnologias)}</ul>
+      ${links ? `<div class="links">${links}</div>` : ""}
+    </article>`;
+}).join("");
+
+// Ano no rodapé e links directos
+$("#year").textContent = new Date().getFullYear();
+$("#whatsapp-link").href = `https://wa.me/${CONFIG.whatsapp}`;
+$("#email-link").href = `mailto:${CONFIG.email}`;
+
+// Formulário de contacto
+const form = $("#contact-form");
+const status = $("#form-status");
+
+function mostrar(texto, tipo) {
+  status.textContent = texto;
+  status.className = tipo;
+}
+
+function validar() {
+  let valido = true;
+  form.querySelectorAll("input, textarea").forEach((campo) => {
+    const vazio = !campo.value.trim();
+    const emailInvalido = campo.type === "email" && !campo.validity.valid;
+    const erro = vazio || emailInvalido;
+    campo.setAttribute("aria-invalid", erro);
+    if (erro) valido = false;
+  });
+  return valido;
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (!validar()) {
+    mostrar("Preenche todos os campos com um email válido.", "erro");
+    return;
+  }
+
+  const dados = new FormData(form);
+
+  // Opção A: Formspree (a mensagem chega ao teu email sem abrir nada)
+  if (CONFIG.formspreeId) {
+    try {
+      mostrar("A enviar...", "");
+      const resposta = await fetch(`https://formspree.io/f/${CONFIG.formspreeId}`, {
+        method: "POST",
+        body: dados,
+        headers: { Accept: "application/json" }
+      });
+      if (!resposta.ok) throw new Error();
+      form.reset();
+      mostrar("Mensagem enviada. Obrigado!", "ok");
+    } catch {
+      mostrar("Não foi possível enviar. Tenta novamente ou usa o WhatsApp.", "erro");
+    }
+    return;
+  }
+
+  // Opção B (sem configuração): abre o email do visitante já preenchido
+  const assunto = encodeURIComponent(`Contacto do portfólio: ${dados.get("nome")}`);
+  const corpo = encodeURIComponent(`${dados.get("mensagem")}\n\nDe: ${dados.get("nome")} (${dados.get("email")})`);
+  window.location.href = `mailto:${CONFIG.email}?subject=${assunto}&body=${corpo}`;
+  mostrar("A abrir a tua aplicação de email...", "ok");
+});
+
+</script>
+</body>
+</html>
